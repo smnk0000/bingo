@@ -18,7 +18,7 @@ class Bingo < Sinatra::Base
 	end
 
 	get '/' do
-		#Bingogame.create!(:num => 12,:flg => true)
+		Bingogame.create!(:num => 12,:flg => true)
 		@numbers = Bingogame.all
 		erb :index
 	end
