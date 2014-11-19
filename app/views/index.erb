@@ -1,0 +1,17 @@
+<h1>出た番号一覧</h1>
+<ul>
+	<table border="3">
+		<tr>
+			<th>id</th><th>num</th><th>flg</th><th>upd_date</th>
+		</tr>
+
+		<% @numbers.each do |bingoGame| %>
+		<tr>
+		  <td><%= h bingoGame.id %></td>
+		  <td><%= h bingoGame.num %></td>
+			<td><%= h bingoGame.flg %></td>
+			<td><%= h bingoGame.updated_at %></td>
+		</tr>
+		<% end %>
+	</table>
+</ul>
