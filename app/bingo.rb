@@ -20,30 +20,6 @@ class Bingo < Sinatra::Base
 
 	get '/' do
 
-=begin
-		#挿入
-		Bingogame.create!(:num => rand(74)+1,:flg => true)
-
-		#検索
-		@numbers = Bingogame.where(:id => 5)
-
-
-		#findで更新
-		tmp = Bingogame.find(5)
-		tmp.flg = false
-		tmp.save
-
-		#whereで更新
-		tmp = Bingogame.where(:id => 5).first
-		tmp.flg = false
-		tmp.save
-
-		#id以外の条件で削除するならdestroy_all
-		Bingogame.delete(3)
-		Bingogame.destroy_all("num=63")
-		Bingogame.destroy_all(:num => 24)
-=end
-
 		@numbers = Bingogame.all
 		erb :index
 	end
@@ -54,7 +30,7 @@ class Bingo < Sinatra::Base
 		for i in 1..75 do
 			Bingogame.create(:num => i, :flg => false)
 		end
-		erb :new
+		redirect "/"
 	end
 
 end
