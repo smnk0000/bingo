@@ -5,6 +5,7 @@ source "https://rubygems.org"
 ruby '2.1.3'
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'activerecord'
 gem 'sinatra-activerecord',:require => 'sinatra/activerecord'
 gem 'rake'
@@ -15,5 +16,4 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'sinatra-contrib'
 end
