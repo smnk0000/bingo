@@ -1,9 +1,12 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'active_record'
 require_relative 'models/bingoGame'
-require 'sinatra/reloader' if development?
+require 'sinatra/reloader'
 
 class Bingo < Sinatra::Base
+	configure :development do
+		register Sinatra::Reloader
+	end
 
 	set :public_folder, File.expand_path(File.join(root, '..', 'public'))
 
@@ -20,7 +23,8 @@ class Bingo < Sinatra::Base
 
 	get '/' do
 
-		@numbers = Bingogame.all
+		#@numbers = Bingogame.all
+		@numbers = Bingogame.where(:flg => true)
 		erb :index
 	end
 
@@ -31,6 +35,29 @@ class Bingo < Sinatra::Base
 			Bingogame.create(:num => i, :flg => false)
 		end
 		redirect "/"
+	end
+
+	get '/lottery' do
+		#ビンゴを回す
+
+		@sel_num = 0
+
+		numbers = Bingogame.where(:flg => false)
+		#rand(tmp.length).to_s
+
+		if numbers.length > 0 then
+			update_number = Bingogame.where(:num => numbers[rand(numbers.length)].num).first
+			update_number.flg = true
+			update_number.save
+
+			@sel_num = update_number.num
+		end
+
+		erb :lottery
+    #tmp[0].num.to_s + "      " + tmp[74].num.to_s
+
+
+		#redirect "/"
 	end
 
 end
