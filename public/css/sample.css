@@ -1,0 +1,19 @@
+body.bgcolor {
+  background-color: #00ff00
+}
+
+.web-font{
+  font-family: 'Lobster', cursive;
+}
+.curled-box {
+  margin: 0 auto;
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  background-color:#012;
+}
+p{
+  font-size: 15em;
+  line-height: 500px;
+  color: #ffffff;
+}

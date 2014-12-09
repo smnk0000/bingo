@@ -53,6 +53,7 @@ class Bingo < Sinatra::Base
 			@sel_num = update_number.num
 		end
 
+		@bgcolor = "class='bgcolor'"
 		erb :lottery
     #tmp[0].num.to_s + "      " + tmp[74].num.to_s
 
